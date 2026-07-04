@@ -2051,11 +2051,38 @@ h3 {
 }
 
 @media (max-width: 760px) {
+  body {
+    overflow-x: hidden;
+  }
+
   .topbar,
   .section-band,
   .footer {
     padding-left: 18px;
     padding-right: 18px;
+  }
+
+  .topbar {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+    min-height: auto;
+    padding-top: 12px;
+    padding-bottom: 10px;
+  }
+
+  .brand-mark {
+    justify-self: center;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: flex-start;
+    padding-bottom: 4px;
+  }
+
+  .nav-links a {
+    flex: 0 0 auto;
   }
 
   .section-band {
@@ -2106,6 +2133,69 @@ h3 {
     grid-template-columns: 1fr;
   }
 
+  .hero,
+  .section-heading,
+  .metric-strip,
+  .pain-grid,
+  .workflow-layout,
+  .dt-timeline,
+  .blueprint-grid,
+  .delivery-layout,
+  .delivery-grid,
+  .outcome-dashboard,
+  .outcome-grid,
+  .roadmap,
+  .steps,
+  .ope-card-grid,
+  .closing-hero,
+  .closing__inner {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .stack-diagram,
+  .matrix,
+  .delivery-core,
+  .delivery-grid article,
+  .outcome-spotlight,
+  .outcome-grid article,
+  .roadmap article,
+  .steps article,
+  .ope-card-grid article,
+  .closing-statement {
+    min-width: 0;
+  }
+
+  .stack-diagram article,
+  .stack-diagram--mapped article,
+  .matrix__cell,
+  .delivery-grid article,
+  .roadmap--combined article {
+    min-height: auto;
+  }
+
+  .stack-diagram p,
+  .matrix__cell p,
+  .delivery-core p,
+  .delivery-grid p,
+  .delivery-grid strong,
+  .outcome-metrics small,
+  .roadmap p,
+  .roadmap strong,
+  .steps p,
+  .ope-card-grid p,
+  .closing-statement p {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .outcome-metrics,
+  .outcome-dashboard.outcome-dashboard--compact,
+  .roadmap.roadmap--combined {
+    grid-template-columns: 1fr;
+  }
+
   .system-map__header,
   .proof-table__title {
     display: grid;
@@ -2151,6 +2241,20 @@ h3 {
 
   .agent-core {
     min-height: 220px;
+  }
+
+  .delivery-core {
+    align-content: start;
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .delivery-core h3 {
+    font-size: 1.36rem;
+  }
+
+  .delivery-grid article {
+    padding: 16px;
   }
 
   .agent-core span {
