@@ -261,19 +261,31 @@
             <p class="eyebrow">05 / NEXUS BLUEPRINT</p>
             <h2>Nexus 模块化蓝图</h2>
           </div>
-          <p>Design Thinking 收敛出的蓝图，不是一次性做大平台，而是把系统拆成可验证、可治理、可扩展的层级。</p>
+          <p>Design Thinking 收敛出的蓝图，不是一次性做大平台，而是把能力拆成可验证、可建设、可取舍的模块。</p>
         </div>
 
         <div class="blueprint-grid blueprint-grid--reversed">
-          <div class="stack-diagram" aria-label="Nexus 分层架构">
-            <article><span>用户入口层</span><p>Nexus Dashboard / 任务入口 / 未来 Nexus Portal</p></article>
-            <article><span>业务流程层</span><p>广告上线 / 配置校验 / 授权 / 上传 / 回填 / 监控 / 报告</p></article>
-            <article class="is-next"><span>配置与规则层</span><p>客户配置结构化 / 账户 / 模板 / 资质 / 命名规则 / 场景 Profile / 任务开关</p><strong>状态：下一阶段重点建设</strong></article>
-            <article class="is-current"><span>自动化执行层</span><p>配置读取 / Payload Planner / 聚宝盆授权 / API 上传 / QR 产物 / 飞书回写</p></article>
-            <article><span>状态与证据层</span><p>Task State / Event Ledger / Idempotency Key / Artifact / Recovery Evidence</p></article>
-            <article><span>AI 协作层</span><p>Design Thinking Agent / PM Agent / Architect Agent / Builder Agent / Review Agent</p></article>
-            <article><span>知识与方法层</span><p>PRD 模板 / 架构模板 / 运行手册 / 异常复盘 / 最佳实践</p></article>
-            <article><span>治理与复用层</span><p>模块边界 / 权限 / 安全开关 / 灰度 / 回滚 / 命名规范</p></article>
+          <div class="stack-diagram stack-diagram--mapped" aria-label="Nexus 模块规划">
+            <article class="is-current">
+              <span>当前闭环层</span>
+              <p>核心广告上线自动化 / 配置校验 / 聚宝盆授权 / API 上传 / 结果回填 / Dashboard 可视化 / 监控与恢复</p>
+              <strong>对应：立即强化</strong>
+            </article>
+            <article class="is-next">
+              <span>配置与规则层</span>
+              <p>客户配置结构化 / 多客户规则抽象 / 场景 Profile / 配置体检矩阵 / 配置归一化预览 / 智能配置建议</p>
+              <strong>对应：重点建设</strong>
+            </article>
+            <article class="is-experiment">
+              <span>轻量提效层</span>
+              <p>报告摘要 / 模板生成 / 辅助校验 / 批处理小工具</p>
+              <strong>对应：快速试验</strong>
+            </article>
+            <article class="is-deferred">
+              <span>边界控制层</span>
+              <p>非核心美化 / 泛聊天入口 / 过早的大而全平台能力</p>
+              <strong>对应：暂缓处理</strong>
+            </article>
           </div>
 
           <div class="matrix matrix--right">
@@ -298,37 +310,6 @@
               <span>暂缓处理</span>
               <strong>低价值 / 低成熟度</strong>
               <p>非核心美化、泛聊天入口、过早的大而全平台能力。</p>
-            </article>
-          </div>
-        </div>
-
-        <div class="config-sketch" aria-label="客户配置结构化草图">
-          <div class="config-sketch__intro">
-            <p class="eyebrow">CONFIG DRAFT</p>
-            <h3>客户配置结构化草图</h3>
-            <p>表达逻辑是先跑顺 1-2 个客户的自动化闭环，再抽象多客户配置结构；当前只作为下一阶段重点建设，不包装成已完全完成成果。</p>
-            <strong>设计草图 / dry-run preview / 下一阶段基础</strong>
-          </div>
-          <div class="config-sketch__flow">
-            <article>
-              <span>01</span>
-              <h4>当前配置输入</h4>
-              <p>客户名 / 账户 / UID / 模板 / 资质 / 命名规则 / 数据来源 / 任务开关</p>
-            </article>
-            <article>
-              <span>02</span>
-              <h4>配置体检矩阵</h4>
-              <p>检查字段完整度、规则混杂度、fallback 项和人工补齐项</p>
-            </article>
-            <article>
-              <span>03</span>
-              <h4>配置归一化预览</h4>
-              <p>Brand / Account / Source / Row Rules / Scenario Profile / Run Overrides</p>
-            </article>
-            <article>
-              <span>04</span>
-              <h4>未来接入执行链</h4>
-              <p>Planner 根据结构化配置生成 payload，执行链按配置选择路径</p>
             </article>
           </div>
         </div>
@@ -459,7 +440,6 @@
 
         <div class="ai-link-panel">
           <p>过去，FDE 代表的是一种贴近业务现场、端到端推进系统落地的能力。今天，业务人借助 AI，也有机会完成类似的事情：从问题定义、系统规划，到工程协作和真实验证。</p>
-          <strong>君子生非异也，善假于物也。真正理解业务现场的人，一旦学会借助 AI，就拥有了把经验转成系统能力的杠杆。</strong>
         </div>
       </section>
 
@@ -468,9 +448,6 @@
           <p class="eyebrow">10 / OPE WORKING MODEL</p>
           <h2>OPE 工作方式</h2>
           <p>从个人效率到组织能力</p>
-          <p>
-            Nexus 的意义不只是完成一条广告上线链路的自动化，而是验证了一种 OPE 式工作方式：业务人可以借助 AI，把自己的经验、流程和判断，逐步沉淀成可执行、可观察、可复用的系统能力。
-          </p>
         </div>
 
         <div class="ope-card-grid" aria-label="OPE 工作方式三张核心卡片">

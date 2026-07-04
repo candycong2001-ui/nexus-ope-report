@@ -788,11 +788,17 @@ h3 {
   border-bottom: 1px solid var(--line);
 }
 
+.stack-diagram--mapped article {
+  min-height: 142px;
+  padding: 20px 22px;
+}
+
 .stack-diagram article:last-child {
   border-bottom: 0;
 }
 
 .stack-diagram article.is-current {
+  border-left: 3px solid rgba(16, 185, 129, 0.72);
   background: linear-gradient(90deg, rgba(37, 99, 235, 0.18), rgba(16, 185, 129, 0.08));
 }
 
@@ -801,14 +807,34 @@ h3 {
   background: linear-gradient(90deg, rgba(245, 158, 11, 0.1), rgba(15, 23, 42, 0.74));
 }
 
-.stack-diagram article.is-next strong {
+.stack-diagram article.is-experiment {
+  border-left: 3px solid rgba(34, 211, 238, 0.56);
+  background: linear-gradient(90deg, rgba(34, 211, 238, 0.08), rgba(15, 23, 42, 0.74));
+}
+
+.stack-diagram article.is-deferred {
+  border-left: 3px solid rgba(148, 163, 184, 0.44);
+  background: linear-gradient(90deg, rgba(148, 163, 184, 0.08), rgba(15, 23, 42, 0.74));
+  opacity: 0.82;
+}
+
+.stack-diagram article strong {
   display: inline-flex;
-  margin-top: 8px;
-  padding: 5px 8px;
-  border: 1px solid rgba(245, 158, 11, 0.26);
+  margin-top: 10px;
+  padding: 6px 9px;
+  border: 1px solid rgba(34, 211, 238, 0.22);
   border-radius: 8px;
-  color: #fbbf24;
+  color: var(--cyan);
   font-size: 0.76rem;
+}
+
+.stack-diagram article.is-current strong {
+  color: var(--green);
+}
+
+.stack-diagram article.is-next strong {
+  border-color: rgba(245, 158, 11, 0.26);
+  color: #fbbf24;
 }
 
 .stack-diagram span {
@@ -1137,95 +1163,6 @@ h3 {
 
 .blueprint-grid--reversed {
   grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
-}
-
-.config-sketch {
-  max-width: 1180px;
-  margin: 26px auto 0;
-  display: grid;
-  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
-  gap: 18px;
-  align-items: stretch;
-}
-
-.config-sketch__intro,
-.config-sketch__flow article {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: rgba(15, 23, 42, 0.76);
-  box-shadow: 0 14px 46px rgba(0, 0, 0, 0.16);
-}
-
-.config-sketch__intro {
-  padding: 22px;
-  border-color: rgba(34, 211, 238, 0.28);
-  background:
-    linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(16, 185, 129, 0.06)),
-    rgba(15, 23, 42, 0.76);
-}
-
-.config-sketch__intro h3 {
-  font-size: 1.35rem;
-}
-
-.config-sketch__intro p:not(.eyebrow) {
-  margin: 12px 0 0;
-  color: var(--soft);
-}
-
-.config-sketch__intro strong {
-  display: inline-flex;
-  margin-top: 18px;
-  padding: 8px 10px;
-  border: 1px solid rgba(34, 211, 238, 0.22);
-  border-radius: 8px;
-  color: var(--cyan);
-  font-size: 0.78rem;
-}
-
-.config-sketch__flow {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.config-sketch__flow article {
-  position: relative;
-  min-height: 180px;
-  padding: 16px;
-}
-
-.config-sketch__flow article:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 34px;
-  right: -12px;
-  width: 12px;
-  height: 1px;
-  background: rgba(34, 211, 238, 0.45);
-}
-
-.config-sketch__flow span {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border: 1px solid rgba(34, 211, 238, 0.28);
-  border-radius: 8px;
-  color: var(--cyan);
-  font-weight: 850;
-}
-
-.config-sketch__flow h4 {
-  margin: 12px 0 0;
-  color: #dbeafe;
-  font-size: 0.96rem;
-}
-
-.config-sketch__flow p {
-  margin: 8px 0 0;
-  color: var(--soft);
-  font-size: 0.82rem;
 }
 
 .agent-orbit {
@@ -2020,7 +1957,6 @@ h3 {
 	  .workflow-layout,
 	  .blueprint-grid,
 	  .agent-layout,
-	  .config-sketch,
 	  .delivery-layout,
 	  .section-heading--split {
 	    grid-template-columns: 1fr;
@@ -2044,14 +1980,6 @@ h3 {
 	  .delivery-grid,
 	  .roadmap--combined {
 	    grid-template-columns: repeat(2, minmax(0, 1fr));
-	  }
-
-	  .config-sketch__flow {
-	    grid-template-columns: repeat(2, minmax(0, 1fr));
-	  }
-
-	  .config-sketch__flow article:not(:last-child)::after {
-	    display: none;
 	  }
 
   .ladder,
@@ -2149,8 +2077,6 @@ h3 {
   .pain-grid,
   .dt-timeline,
 	  .blueprint-grid,
-	  .config-sketch,
-	  .config-sketch__flow,
 	  .agent-grid,
 	  .evidence-grid,
 	  .belief-grid,
