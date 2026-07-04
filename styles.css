@@ -262,9 +262,14 @@ h3 {
   letter-spacing: 0;
 }
 
+h1,
+h2 {
+  overflow-wrap: anywhere;
+}
+
 h1 {
-  max-width: 680px;
-  font-size: 3.08rem;
+  max-width: 620px;
+  font-size: 2.46rem;
   font-weight: 850;
 }
 
@@ -287,12 +292,13 @@ h3 {
 }
 
 .hero__subtitle {
-  max-width: 760px;
+  max-width: 650px;
   margin: 12px 0 0;
   color: var(--cyan);
-  font-size: 2.02rem;
+  font-size: 1.26rem;
   font-weight: 820;
-  line-height: 1.18;
+  line-height: 1.32;
+  overflow-wrap: anywhere;
 }
 
 .hero-insights {
@@ -899,6 +905,14 @@ h3 {
   font-size: 0.82rem;
 }
 
+.horizontal-flow--six {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.horizontal-flow--six article {
+  min-height: 166px;
+}
+
 .capability-grid {
   max-width: 1180px;
   margin: 22px auto 0;
@@ -928,7 +942,7 @@ h3 {
 }
 
 .real-path {
-  max-width: 960px;
+  max-width: 1180px;
   margin: 38px auto 0;
 }
 
@@ -953,6 +967,18 @@ h3 {
 
 .screenshot-card--paired {
   grid-column: span 6;
+}
+
+.screenshot-card--flow {
+  grid-column: span 7;
+}
+
+.screenshot-card--api {
+  grid-column: span 5;
+}
+
+.screenshot-card--config {
+  grid-column: 1 / -1;
 }
 
 .screenshot-trigger {
@@ -998,7 +1024,7 @@ h3 {
 }
 
 .screenshot-card--flow .screenshot-trigger {
-  height: 132px;
+  height: 180px;
 }
 
 .screenshot-card--flow img {
@@ -1096,6 +1122,95 @@ h3 {
 
 .blueprint-grid--reversed {
   grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+}
+
+.config-sketch {
+  max-width: 1180px;
+  margin: 26px auto 0;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1.28fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.config-sketch__intro,
+.config-sketch__flow article {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.76);
+  box-shadow: 0 14px 46px rgba(0, 0, 0, 0.16);
+}
+
+.config-sketch__intro {
+  padding: 22px;
+  border-color: rgba(34, 211, 238, 0.28);
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(16, 185, 129, 0.06)),
+    rgba(15, 23, 42, 0.76);
+}
+
+.config-sketch__intro h3 {
+  font-size: 1.35rem;
+}
+
+.config-sketch__intro p:not(.eyebrow) {
+  margin: 12px 0 0;
+  color: var(--soft);
+}
+
+.config-sketch__intro strong {
+  display: inline-flex;
+  margin-top: 18px;
+  padding: 8px 10px;
+  border: 1px solid rgba(34, 211, 238, 0.22);
+  border-radius: 8px;
+  color: var(--cyan);
+  font-size: 0.78rem;
+}
+
+.config-sketch__flow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.config-sketch__flow article {
+  position: relative;
+  min-height: 180px;
+  padding: 16px;
+}
+
+.config-sketch__flow article:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 34px;
+  right: -12px;
+  width: 12px;
+  height: 1px;
+  background: rgba(34, 211, 238, 0.45);
+}
+
+.config-sketch__flow span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid rgba(34, 211, 238, 0.28);
+  border-radius: 8px;
+  color: var(--cyan);
+  font-weight: 850;
+}
+
+.config-sketch__flow h4 {
+  margin: 12px 0 0;
+  color: #dbeafe;
+  font-size: 0.96rem;
+}
+
+.config-sketch__flow p {
+  margin: 8px 0 0;
+  color: var(--soft);
+  font-size: 0.82rem;
 }
 
 .agent-orbit {
@@ -1274,6 +1389,108 @@ h3 {
   margin: 6px 0 0;
   color: var(--soft);
   font-size: 0.86rem;
+}
+
+.outcome-grid--compare article {
+  min-height: 132px;
+  padding: 16px;
+}
+
+.outcome-grid--compare span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+  text-transform: none;
+}
+
+.outcome-grid--compare h3 {
+  color: var(--cyan);
+}
+
+.delivery-note {
+  max-width: 1180px;
+  margin: -10px auto 22px;
+  padding: 16px 18px;
+  border: 1px solid rgba(34, 211, 238, 0.2);
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.58);
+}
+
+.delivery-note p {
+  margin: 0;
+  color: var(--soft);
+  font-size: 0.94rem;
+}
+
+.delivery-layout {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(240px, 0.65fr) minmax(0, 1.35fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.delivery-core,
+.delivery-grid article {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.78);
+  box-shadow: 0 14px 46px rgba(0, 0, 0, 0.18);
+}
+
+.delivery-core {
+  display: grid;
+  align-content: center;
+  min-height: 360px;
+  padding: 26px;
+  border-color: rgba(34, 211, 238, 0.3);
+  background:
+    radial-gradient(circle at 50% 30%, rgba(34, 211, 238, 0.16), transparent 58%),
+    linear-gradient(135deg, rgba(37, 99, 235, 0.22), rgba(15, 23, 42, 0.86));
+}
+
+.delivery-core span,
+.delivery-grid span {
+  display: block;
+  color: var(--cyan);
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+.delivery-core h3 {
+  margin-top: 14px;
+  font-size: 1.68rem;
+}
+
+.delivery-core p {
+  margin: 14px 0 0;
+  color: var(--soft);
+  font-weight: 650;
+}
+
+.delivery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.delivery-grid article {
+  min-height: 174px;
+  padding: 16px;
+}
+
+.delivery-grid p {
+  margin: 9px 0 0;
+  color: var(--soft);
+  font-size: 0.86rem;
+}
+
+.delivery-grid strong {
+  display: block;
+  margin-top: 10px;
+  color: var(--green);
+  font-size: 0.8rem;
 }
 
 .roadmap--combined,
@@ -1680,12 +1897,14 @@ h3 {
   }
 
   .hero,
-  .workflow-layout,
-  .blueprint-grid,
-  .agent-layout,
-  .section-heading--split {
-    grid-template-columns: 1fr;
-  }
+	  .workflow-layout,
+	  .blueprint-grid,
+	  .agent-layout,
+	  .config-sketch,
+	  .delivery-layout,
+	  .section-heading--split {
+	    grid-template-columns: 1fr;
+	  }
 
   .hero__content,
   .hero__visual {
@@ -1699,12 +1918,21 @@ h3 {
   .evidence-grid,
   .steps,
   .capability-grid,
-  .reference-panel,
-  .journey-line,
-  .outcome-grid,
-  .roadmap--combined {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+	  .reference-panel,
+	  .journey-line,
+	  .outcome-grid,
+	  .delivery-grid,
+	  .roadmap--combined {
+	    grid-template-columns: repeat(2, minmax(0, 1fr));
+	  }
+
+	  .config-sketch__flow {
+	    grid-template-columns: repeat(2, minmax(0, 1fr));
+	  }
+
+	  .config-sketch__flow article:not(:last-child)::after {
+	    display: none;
+	  }
 
   .ladder,
   .roadmap {
@@ -1800,11 +2028,15 @@ h3 {
   .metric-strip,
   .pain-grid,
   .dt-timeline,
-  .blueprint-grid,
-  .agent-grid,
-  .evidence-grid,
-  .belief-grid,
-  .ladder,
+	  .blueprint-grid,
+	  .config-sketch,
+	  .config-sketch__flow,
+	  .agent-grid,
+	  .evidence-grid,
+	  .belief-grid,
+	  .delivery-layout,
+	  .delivery-grid,
+	  .ladder,
   .roadmap,
   .steps,
   .audience-grid,
@@ -1842,9 +2074,16 @@ h3 {
     grid-template-columns: 1fr;
   }
 
-  .workflow-rail article span {
-    grid-row: auto;
-  }
+	  .workflow-rail article span {
+	    grid-row: auto;
+	  }
+
+	  .screenshot-card--flow,
+	  .screenshot-card--api,
+	  .screenshot-card--paired,
+	  .screenshot-card--config {
+	    grid-column: 1 / -1;
+	  }
 
   .matrix {
     grid-template-columns: 1fr;
