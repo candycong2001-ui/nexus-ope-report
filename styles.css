@@ -69,7 +69,7 @@ section {
   top: 0;
   z-index: 20;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 18px;
   min-height: 68px;
@@ -80,8 +80,10 @@ section {
 }
 
 .brand-mark {
+  position: absolute;
+  left: 28px;
   display: inline-flex;
-  flex: 0 0 170px;
+  flex: none;
   align-items: center;
   gap: 10px;
   min-width: 170px;
@@ -116,10 +118,12 @@ section {
 
 .nav-links {
   display: flex;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   justify-content: center;
   gap: 2px;
+  max-width: min(880px, calc(100vw - 280px));
   min-width: 0;
+  padding: 0 4px;
   scrollbar-width: none;
 }
 
@@ -1940,15 +1944,20 @@ h3 {
 
 @media (max-width: 1120px) {
   .topbar {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .brand-mark {
+    position: static;
+    left: auto;
+    flex: 0 0 auto;
     min-width: 0;
   }
 
   .nav-links {
+    flex: 1 1 auto;
     justify-content: center;
+    max-width: none;
     overflow-x: auto;
     padding-bottom: 2px;
   }
