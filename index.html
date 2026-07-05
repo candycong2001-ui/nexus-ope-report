@@ -33,6 +33,8 @@
         <a href="#new-work">OPE</a>
         <a href="#not-end">Not End</a>
       </nav>
+
+      <button class="presentation-toggle" type="button" aria-label="进入演讲模式">演讲模式</button>
     </header>
 
     <main id="top">
@@ -164,7 +166,6 @@
           <div class="section-heading section-heading--compact">
             <p class="eyebrow">REAL TASK LOOP</p>
             <h3>一个真实任务的闭环路径</h3>
-            <p>用一个系统执行视频作为主舞台，旁边保留五类闭环证据。</p>
           </div>
           <div class="demo-stage">
             <figure class="demo-stage__screen">
@@ -180,22 +181,15 @@
               </video>
               <figcaption>
                 <span>真实任务从进入、执行到完成的系统闭环</span>
-                <strong>30 秒系统执行片段</strong>
+                <strong>完整系统执行录屏</strong>
               </figcaption>
             </figure>
 
             <div class="evidence-rail" aria-label="闭环证据节点">
-              <article><b>01</b><div><strong>执行链路</strong><p>前置检查、授权、上传、回填连续可追踪。</p></div></article>
-              <article><b>02</b><div><strong>API 上传</strong><p>上传进度、行级结果和完成状态可见。</p></div></article>
-              <article><b>03</b><div><strong>任务状态</strong><p>任务进入系统承接，状态不再散落在人工记忆里。</p></div></article>
-              <article><b>04</b><div><strong>消耗监控</strong><p>预算、消耗、达率和异常项持续跟踪。</p></div></article>
-              <article><b>05</b><div><strong>产物回填</strong><p>二维码、Excel、飞书回写结果形成交付证据。</p></div></article>
-              <div class="proof-chips" aria-label="可点击放大的证据层">
-                <button class="screenshot-trigger" type="button" data-full="./assets/execution-chain.png" data-title="执行链路：任务从前置检查一路推进到通知推送。">执行链路截图</button>
-                <button class="screenshot-trigger" type="button" data-full="./assets/api-upload-progress.png" data-title="API 上传：上传进度、行级结果和二维码产物可追踪。">API 上传截图</button>
-                <button class="screenshot-trigger" type="button" data-full="./assets/task-list.png" data-title="任务视图：任务状态、预算消耗、流程类型和耗时可见。">任务列表截图</button>
-                <button class="screenshot-trigger" type="button" data-full="./assets/spend-monitor.png" data-title="消耗监控：系统协助盯住预算、进度和异常。">消耗监控截图</button>
-              </div>
+              <article><b>01</b><div><strong>API 上传</strong><p>上传进度、行级结果和完成状态可见。</p></div></article>
+              <article><b>02</b><div><strong>任务状态</strong><p>任务进入系统承接，状态不再散落在人工记忆里。</p></div></article>
+              <article><b>03</b><div><strong>消耗监控</strong><p>预算、消耗、达率和异常项持续跟踪。</p></div></article>
+              <article><b>04</b><div><strong>产物回填</strong><p>二维码、Excel、飞书回写结果形成交付证据。</p></div></article>
             </div>
           </div>
         </div>
@@ -518,12 +512,18 @@
       </section>
     </main>
 
-    <div class="lightbox" hidden>
-      <button class="lightbox__close" type="button" aria-label="关闭大图">×</button>
-      <figure>
-        <img src="" alt="" />
-        <figcaption></figcaption>
-      </figure>
+    <div class="presentation-deck" hidden aria-live="polite" tabindex="-1">
+      <div class="presentation-frame">
+        <div class="presentation-toolbar" aria-label="演讲模式控制">
+          <span class="presentation-counter">1 / 11</span>
+          <div>
+            <button class="presentation-prev" type="button">上一页</button>
+            <button class="presentation-next" type="button">下一页</button>
+            <button class="presentation-close" type="button">退出</button>
+          </div>
+        </div>
+        <div class="presentation-slide"></div>
+      </div>
     </div>
 
     <footer class="footer">

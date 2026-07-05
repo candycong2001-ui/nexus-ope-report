@@ -39,36 +39,87 @@ window.addEventListener("hashchange", () => window.setTimeout(updateActiveSectio
 window.addEventListener("load", updateActiveSection);
 updateActiveSection();
 
-const lightbox = document.querySelector(".lightbox");
-const lightboxImage = lightbox?.querySelector("img");
-const lightboxCaption = lightbox?.querySelector("figcaption");
-const lightboxClose = lightbox?.querySelector(".lightbox__close");
+const presentationDeck = document.querySelector(".presentation-deck");
+const presentationSlide = presentationDeck?.querySelector(".presentation-slide");
+const presentationCounter = presentationDeck?.querySelector(".presentation-counter");
+const presentationToggle = document.querySelector(".presentation-toggle");
+const presentationPrev = presentationDeck?.querySelector(".presentation-prev");
+const presentationNext = presentationDeck?.querySelector(".presentation-next");
+const presentationClose = presentationDeck?.querySelector(".presentation-close");
+let presentationIndex = 0;
 
-function openLightbox(trigger) {
-  if (!lightbox || !lightboxImage || !lightboxCaption) return;
-  lightboxImage.src = trigger.dataset.full;
-  lightboxImage.alt = trigger.querySelector("img")?.alt || "";
-  lightboxCaption.textContent = trigger.dataset.title || "";
-  lightbox.hidden = false;
-  document.body.classList.add("has-lightbox");
+function currentSectionIndex() {
+  const activeHash = navLinks.find((link) => link.classList.contains("is-active"))?.getAttribute("href");
+  const activeId = activeHash?.replace("#", "");
+  const index = sections.findIndex((section) => section.id === activeId);
+  return index >= 0 ? index : 0;
 }
 
-function closeLightbox() {
-  if (!lightbox || !lightboxImage) return;
-  lightbox.hidden = true;
-  lightboxImage.src = "";
-  document.body.classList.remove("has-lightbox");
+function renderPresentationSlide(index) {
+  if (!presentationSlide || !presentationCounter || !sections.length) return;
+  presentationIndex = Math.max(0, Math.min(index, sections.length - 1));
+  const section = sections[presentationIndex].cloneNode(true);
+  section.removeAttribute("id");
+  section.querySelectorAll("[id]").forEach((node) => node.removeAttribute("id"));
+  section.querySelectorAll("video").forEach((video) => {
+    video.controls = true;
+    video.pause();
+  });
+  presentationSlide.replaceChildren(section);
+  presentationCounter.textContent = `${presentationIndex + 1} / ${sections.length}`;
 }
 
-document.querySelectorAll(".screenshot-trigger").forEach((trigger) => {
-  trigger.addEventListener("click", () => openLightbox(trigger));
-});
+async function openPresentation() {
+  if (!presentationDeck) return;
+  renderPresentationSlide(currentSectionIndex());
+  presentationDeck.hidden = false;
+  document.body.classList.add("has-presentation");
+  presentationDeck.focus?.();
+  if (presentationDeck.requestFullscreen && !document.fullscreenElement) {
+    try {
+      await presentationDeck.requestFullscreen({ navigationUI: "hide" });
+    } catch {
+      // Fullscreen can be blocked by the browser; the in-page deck still works.
+    }
+  }
+}
 
-lightboxClose?.addEventListener("click", closeLightbox);
-lightbox?.addEventListener("click", (event) => {
-  if (event.target === lightbox) closeLightbox();
+function closePresentation(exitFullscreen = true) {
+  if (!presentationDeck || presentationDeck.hidden) return;
+  presentationDeck.hidden = true;
+  presentationSlide?.replaceChildren();
+  document.body.classList.remove("has-presentation");
+  if (exitFullscreen && document.fullscreenElement === presentationDeck) {
+    document.exitFullscreen?.().catch(() => {});
+  }
+}
+
+function goPresentation(delta) {
+  if (!presentationDeck || presentationDeck.hidden) return;
+  renderPresentationSlide(presentationIndex + delta);
+}
+
+presentationToggle?.addEventListener("click", openPresentation);
+presentationPrev?.addEventListener("click", () => goPresentation(-1));
+presentationNext?.addEventListener("click", () => goPresentation(1));
+presentationClose?.addEventListener("click", () => closePresentation());
+
+document.addEventListener("fullscreenchange", () => {
+  if (!document.fullscreenElement && presentationDeck && !presentationDeck.hidden) {
+    closePresentation(false);
+  }
 });
 
 window.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !lightbox?.hidden) closeLightbox();
+  if (presentationDeck && !presentationDeck.hidden) {
+    if (["ArrowRight", "PageDown", " "].includes(event.key)) {
+      event.preventDefault();
+      goPresentation(1);
+    }
+    if (["ArrowLeft", "PageUp"].includes(event.key)) {
+      event.preventDefault();
+      goPresentation(-1);
+    }
+    if (event.key === "Escape") closePresentation();
+  }
 });
